@@ -23,6 +23,11 @@ class App extends Component {
     this.setState({ todos: todos });
   }
 
+  deleteTodo(todo) {
+    const todos = this.state.todos.filter(el => el !== todo);
+    this.setState({ todos: todos });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     if (!this.state.newTodoDescription) { return }
@@ -44,6 +49,7 @@ class App extends Component {
               description={todo.description}
               isCompleted={todo.isCompleted}
               toggleComplete={() => this.toggleComplete(index)}
+              deleteTodo={() => this.deleteTodo(todo)}
             />
           )}
         </ul>
